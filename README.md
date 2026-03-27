@@ -32,7 +32,7 @@ The application implements a stateful HTTP handshake to bypass Cross-Site Reques
 * **Flash**: Click the **Upload** button. If you encounter a `Device or resource busy` error, ensure all Serial Monitors are closed before retrying.
 
 #### 4. Verification
-* Open the **Serial Monitor** at `115200` baud.
+* Open the **Serial Monitor**(Ctrl+M) at `115200` baud.
 * Watch for the 3-STEP sequence:
     1.  **Intercept**: Confirms a successful "magic" token grab. 
     2.  **Activation**: Confirms Port 1000 has initialized your session. 

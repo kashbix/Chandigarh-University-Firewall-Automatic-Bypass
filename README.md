@@ -1,4 +1,6 @@
 # Chandigarh University Firewall Automatic Bypass
+> **Important Info** \> This script does required a active univeristy UID to work, this isnt an script that removes the firewall rather it removes the need to re-authenticate multiple times by using a esp32.
+> 
 A lightweight, automated C++ solution for maintaining persistent network connectivity on Univeristy firewall that utilize captive portal authentication.
 
 The application implements a stateful HTTP handshake to bypass Cross-Site Request Forgery (CSRF) protections and session-timeout constraints typically found in university or corporate environments.
@@ -7,8 +9,6 @@ The application implements a stateful HTTP handshake to bypass Cross-Site Reques
 
 #### 1. Hardware Preparation
 * **Device**: ESP32 Development Board (WROOM-32, NodeMCU, etc.).
-* **Connection**: Connect the ESP32 to your workstation via a high-quality Micro-USB or USB-C cable.
-* **Port Check**: Identify your serial port (e.g., `/dev/ttyUSB0` on Linux or `COM3` on Windows). 
 
 #### 2. Software Requirements
 * **Arduino IDE**: Version 2.0 or higher recommended.
@@ -19,18 +19,16 @@ The application implements a stateful HTTP handshake to bypass Cross-Site Reques
 
 #### 3. Configuration & Flashing (most important)
 * **Clone the Repository**
+     ```bash
+     git clone https://github.com/kashbix/void-player.git
+     cd void-player
+     ```
 
-        ```bash
-            git clone https://github.com/kashbix/void-player.git
-            cd void-player
-
-        ````
-
-* **Credentials**: Update the `ssid`, `wifi_password`, `uid`, and `password` variables in the finalesp32.ino file present into the top CONFIGURATION section
+* **Credentials**: Open finalesp32.ino file and update the `ssid`, `wifi_password`, `uid`, and `password` variables in the  present into the top CONFIGURATION section
 
 * **Upload Settings**:
-    * **Board**: "DOIT ESP32 DEVKIT V1" (or your specific model).
-    * **Baud Rate**: `115200`.
+    * **Board**: "DOIT ESP32 DEVKIT V1" (or your specific model usually present at the back or on the processor).
+    * **Baud Rate**: `115200` (tools>upload speed)
 * **Flash**: Click the **Upload** button. If you encounter a `Device or resource busy` error, ensure all Serial Monitors are closed before retrying.
 
 #### 4. Verification
@@ -52,17 +50,14 @@ Once verified, the ESP32 no longer requires a computer connection.
 
 To make the ESP32 a truly "set and forget" headless device, you can use the built-in **LED_BUILTIN** (usually GPIO 2) to get visual feedback on the connection status without needing a serial monitor.
 
-
-
 **LED Signal Key:**
-* **Rapid Blinking**: Attempting to connect to the local Wi-Fi AP. [cite: 43]
-* **Solid Light**: Successfully authenticated and Internet access verified. [cite: 57-59]
-* **Single Pulse**: Heartbeat sent and acknowledged by the firewall. [cite: 62]
-* **Slow Blinking**: Connection lost; re-authentication sequence in progress. [cite: 64-65]
+* **Rapid Blinking**: Attempting to connect to the local Wi-Fi AP. 
+* **Solid Light**: Successfully authenticated and Internet access verified. 
+* **Single Pulse**: Heartbeat sent and acknowledged by the firewall. 
+* **Slow Blinking**: Connection lost; re-authentication sequence in progress. 
 
----
 
-### Troubleshooting
+### 7. Troubleshooting
 
 If the deployment fails, check the following common environmental factors:
 
@@ -70,6 +65,6 @@ If the deployment fails, check the following common environmental factors:
 * **Password Change**: Sometimes the firewall request you to change the password, so it directs you to cuims.cuchd.in, in that case do change the password and make upadate in the file.
 
 
-## License
+# License
 
 This project is open-source and available under the MIT License. See the LICENSE file for further details.
